@@ -1,0 +1,151 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{hyperref}
+%{setspace}
+\usepackage{animate}
+\usepackage[dvips]{graphicx}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{lineno}
+\usepackage{draftwatermark}
+
+
+\linenumbers
+\SetWatermarkText{P E QUINAY}
+\SetWatermarkScale{3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\topmargin}{0mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{165mm}
+\setlength{\textheight}{247mm}
+\setlength{\parindent}{6pt}
+\setlength{\parskip}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+  \textbf{University of the Philippines Diliman\\ College of Engineering -- Institute of Civil Engineering} \\
+
+  \textbf{CE 297 Finite Element Method for Structural Dynamics \\ 1$^{st}$ Semester A.Y. 2021-2022} \\
+
+  \bigskip
+  \bigskip
+
+  \textbf{Homework 1:}
+
+  \textbf{TeX Document Editing Practice}
+\end{center}
+
+\bigskip
+
+\noindent Start Date: September 17, 2021 \\
+\noindent Due Date: September 24, 2021 (send through email: pbquinay2[at]up.edu.ph)\\
+\noindent To submit: CE297\_HW1\_\{Your Surname\}.tex file and the output PDF file\\
+
+\noindent \textbf{Instructions:}
+
+Use any TeX Editor (TeXworks, TeXstudio, MiKTeX, TeXmaker, Overleaf) to work on the following:
+
+\begin{enumerate}
+  \item Write your background related to FEM (related courses or trainings taken previously, etc.), if any.
+
+  \item Write your interests related to FEM and/or dynamic problem (target practical applications, thesis, or dissertation topic, etc.)?
+
+  \item Create a three-column table listing your favorite (finished) M.S. and/or PhD courses with corresponding Course Code and Title, and Year Taken (use the standard TeX command on how to create a table); for example, see Table \ref{sampletablelabel}
+
+  \item Create a figure of any image or photo related to dynamic problem, with caption (use the standard TeX command on how to create a figure; also cite the source of image or photo, if applicable; for example see Figure \ref{samplelabel})
+
+  \item (Optional) Create an animation, with caption (use the standard TeX command on how to create a figure; also cite the source of image or photo, if applicable; for example see Figure \ref{sampleanim}).
+
+  \item Write your favorite equation in TeX format (Example, See Eq. \ref{labeleq1}).
+
+  \item Enumerate your free days/available schedules for make-up class(es) (for example, Wednesdays, 6-9pm) (use the standard TeX command on how to enumerate a list).
+
+
+
+\end{enumerate}
+
+\noindent Note 1: Most queries in using TeX can be found in the Web, so there is no need to buy a book. \\
+
+\noindent Note 2: You can also play with formatting, such as using \textit{italics}, \textbf{bold}, and \textcolor{red}{colored fonts}. \\
+
+\noindent \textbf{Settings:} \\
+Paper size: A4 \\
+Font size: 12 pt \\
+Output format: PDF\\
+
+\bigskip
+
+\hrulefill
+
+\newpage
+
+\noindent Available schedules for consultation:
+\begin{enumerate}
+  \item Tue, Thu: 1:00PM-5:00PM
+  \item Wed, Fri: 9:00AM - 12:00NN
+\end{enumerate}
+
+
+
+
+
+\begin{table} [htb]
+  \begin{center}
+    \caption{My Courses}
+    {\begin{tabular}[t]{ccc}
+        \hline
+        \textbf{Course} & \textbf{Course Title}                   & \textbf{Year}  \\
+        \textbf{Code}   &                                         & \textbf{Taken} \\    \hline
+        ES204           & Numerical Methods in Engineering        & 2019           \\
+        CE226           & Structural Dynamics                     & 2020           \\
+        CE257           & Discrete Methods of Structural Analysis & 2021           \\     \hline
+      \end{tabular}}
+    \label{sampletablelabel}
+  \end{center}
+\end{table}
+
+
+
+
+\begin{equation}
+  (\mathbf{K}+\frac{2}{\Delta t}\mathbf{C}+\frac{4}{\Delta t^2}\mathbf{M})\mathbf{u}^{n+1}=(\frac{2}{\Delta t}\mathbf{C}+\frac{4}{\Delta t^2}\mathbf{M})\mathbf{u}^n+(\mathbf{C}+\frac{4}{\Delta t}\mathbf{M})\mathbf{v}^{n}+\mathbf{Ma}^{n}+\mathbf{f}^{n+1},
+  \label{labeleq1}
+\end{equation}
+
+
+
+\begin{figure}[!h]
+  \begin{center}
+    \scalebox{1.25}{\includegraphics{./figure/bridge}}
+    \caption{Sample FEM meshed model}
+    \label{samplelabel}
+  \end{center}
+\end{figure}
+
+
+
+\begin{figure}[!h]
+  \begin{center}
+    \animategraphics[controls,loop,width=6in]{3}{./anim/disp}{1}{11}
+    \caption{Sample animation}
+    \label{sampleanim}
+  \end{center}
+\end{figure}
+
+
+\bigskip
+
+\bigskip
+
+\begin{center}
+  \textbf{- End of Instructions for Homework 1 -}
+\end{center}
+
+\end{document}
