@@ -6,6 +6,7 @@
 *.log
 *.synctex
 *.gz
+*.out
 
 /HW1/anim
 /HW1/figure
