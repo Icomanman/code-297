@@ -1,7 +1,9 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage{lineno}
+\usepackage{animate}
 \usepackage{draftwatermark}
 \usepackage{graphicx}
+\usepackage{graphics}
 \usepackage{hyperref}
 
 % \linenumbers
@@ -31,7 +33,7 @@
 % Personal background
 \noindent \textbf{1. Personal Background} \\
 
-\noindent My first encounter with FEM is during my work as a graduate engineer.
+\noindent My first encounter with FEM is during my work as a graduate engineer 10 years ago.
 Working with 2D plate elements, I was introduced to the concept of meshing (discretisation)
 in order to arrive at more accurate results. \\
 
@@ -76,7 +78,7 @@ which is the central concept of my planned thesis. \\
 
 % Figure
 \textbf{4. Figure - Dynamic Problem}
-\begin{figure} [h]
+\begin{figure} [!h]
   \begin{center}
     \scalebox{0.5}{\includegraphics{./vib-signal.png}}
     \caption{Vibration signal decomposition into two harmonic components.}
@@ -87,7 +89,13 @@ which is the central concept of my planned thesis. \\
 
 % Animation
 \textbf{5. Animation}
-
+\begin{figure} [!h]
+  \begin{center}
+    \animategraphics[controls,loop,width=6in]{3}{./anim/disp}{1}{11}
+    \caption{Demo Animation}
+    \label{demoanimation}
+  \end{center}
+\end{figure}
 \bigskip
 
 % Equation
