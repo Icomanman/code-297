@@ -1,20 +1,32 @@
-import os
+import sys
+from floater import vecToFloat
 
 
 def dotProduct(v, u):
-    print(type(v), type(u))
-
     if (len(v) < 1 or len(u) < 1):
-        print('> Usage: v and u must be a vector.')
+        print('> Usage: v and u must be vectors.')
         return 1
     elif (len(v) != len(u)):
         print('> v and u must be of the same dimension.')
-        return 1
+        sys.exit(1)
 
-    # for range(i=0, len(v)):
+    i = 0
+    dot_prod = 0  # setting default to 0 may cause issues later on
 
-    return
+    while i < len(v):
+        dot_prod += v[i] * u[i]
+        i += 1
+
+    print(f'The resulting dot product is {dot_prod}.')
+    return dot_prod
 
 
 if __name__ == '__main__':
-    dotProduct(argv[1], argv[2])
+    if (len(sys.argv) < 3):
+        print('Usage: dot_prod.py FILENAME.dat(vector 1) FILENAME.dat(vector 2')
+        sys.exit(1)
+
+    v = vecToFloat(sys.argv[1])
+    u = vecToFloat(sys.argv[2])
+
+    dotProduct(v, u)

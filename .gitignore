@@ -12,3 +12,6 @@
 
 /HW1/anim
 /HW1/figure
+
+__pycache__
+*.pyc
