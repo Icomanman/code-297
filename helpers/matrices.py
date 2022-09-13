@@ -1,6 +1,10 @@
 import sys
 
 
+def add(A, B):
+    return
+
+
 def matrix(m, n, src_file):
     if (m == None or n == None or src_file == None):
         sys.exit(1)
@@ -18,7 +22,11 @@ def matrix(m, n, src_file):
     return A
 
 
-def add(A, B):
+def matrixMult(A, B):
+    return
+
+
+def scalarMult(A, B):
     return
 
 
@@ -26,9 +34,9 @@ def subtract(A, B):
     return
 
 
-def mult(A, B):
+def trans(A):
     return
 
 
-def trans(A):
+def vectorMult(A, B):
     return

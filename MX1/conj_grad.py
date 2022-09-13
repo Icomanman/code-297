@@ -2,7 +2,8 @@ import os
 import sys
 sys.path.append(f'{os.getcwd()}/helpers')
 
-from matrices import matrix, add, subtract, mult, trans  # NOQA
+from matrices import matrix, add, subtract, trans  # NOQA
+from matrices import matrixMult, scalarMult, vectorMult  # NOQA
 from vectors import vecToFloat  # NOQA
 
 # hardcoded constants
