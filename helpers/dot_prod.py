@@ -1,5 +1,5 @@
 import sys
-from floater import vecToFloat
+from vector import vecToFloat
 
 
 def dotProduct(v, u):

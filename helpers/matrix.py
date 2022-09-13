@@ -1,6 +1,18 @@
-from floater import vecToFloat
+import sys
 
 
-def matrix(row, col):
+def matrix(m, n, src_file):
+    if (m == None or n == None or src_file == None):
+        sys.exit(1)
 
-    return
+    A = list()
+    with open(src_file, 'r') as f:
+        for row in f.readlines():
+            row_el = list()
+            for el in row.strip():
+                if(el != ' '):
+                    row_el.append(float(el))
+            A.append(row_el)
+
+    print(f'A {m} x {n} matrix is created.')
+    return A
