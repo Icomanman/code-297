@@ -1,9 +1,9 @@
-from cgi import test
 import os
 import sys
-sys.path.append(os.getcwd() + '/helpers')
-from matrix import matrix  # NOQA
-from vector import vecToFloat  # NOQA
+sys.path.append(f'{os.getcwd()}/helpers')
+
+from matrices import matrix, add, subtract, mult, trans  # NOQA
+from vectors import vecToFloat  # NOQA
 
 # hardcoded constants
 A_file = './dat/A_Matrix24.dat'

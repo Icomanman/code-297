@@ -16,3 +16,19 @@ def matrix(m, n, src_file):
 
     print(f'A {m} x {n} matrix is created.')
     return A
+
+
+def add(A, B):
+    return
+
+
+def subtract(A, B):
+    return
+
+
+def mult(A, B):
+    return
+
+
+def trans(A):
+    return
