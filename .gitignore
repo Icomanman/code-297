@@ -1,4 +1,6 @@
 
+.vscode
+
 *.pdf
 *.aux
 *.fdb_latexmk
