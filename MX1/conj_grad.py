@@ -7,19 +7,20 @@ from matrices import matrixMult, scalarMult, vectorMult  # NOQA
 from vectors import vecToFloat  # NOQA
 
 # hardcoded constants
-A_file = './dat/A_Matrix24.dat'
-b_file = './dat/b_vector24.dat'
+dat_dir = os.getcwd() + '/MX1/dat'
 test_dir = os.getcwd() + '/MX1/tests'
+A_file = '/A_Matrix24.csv'
+b_file = '/b_vector24.dat'
 
 
 def main():
     print('This is an implementation of the Conjugate Gradient Method algorithm.')
-    A = matrix(test_dir + '/A.dat')
+    # A = matrix(test_dir + '/A.dat')
+    A = matrix(dat_dir + A_file)
     b = vecToFloat(test_dir + '/b.dat')
-    print(f"before: {A['val']}")
-    print(subtract(A, A))
-    print(f"after: {A['val']}")
-
+    # print(subtract(A, A))
+    print(A['val'])
+    print(f"size: {A['row']} x {A['col']}")
     return
 
 

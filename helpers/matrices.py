@@ -24,15 +24,30 @@ def add(A, B):
 
 
 def matrix(src_file):
+    '''
+    A_str = csv.reader(f)
+        for row in A_str:
+            row_el = list()
+            for el in row:
+                row_el.append(float(el))
+            n = len(row)
+            A.append(row_el)
+        m = A_str.line_num
+    '''
     A = list()
     with open(src_file, 'r') as f:
         A_str = f.readlines()
         m = len(A_str)  # row
         for i in range(len(A_str)):
             row_el = list()
+            val = ''
             for el in A_str[i].strip():
-                if(el != ' '):
-                    row_el.append(float(el))
+                if(el != ','):
+                    val += el
+                else:
+                    # row_el.append(float(el))
+                    row_el.append(float(val))
+                    val = ''
             n = len(row_el)  # col
             A.append(row_el)
     return {'val': A, 'row': m, 'col': n}
