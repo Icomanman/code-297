@@ -14,8 +14,11 @@ test_dir = os.getcwd() + '/MX1/tests'
 
 def main():
     print('This is an implementation of the Conjugate Gradient Method algorithm.')
-    A = matrix(2, 2, test_dir + '/A.dat')
+    A = matrix(test_dir + '/A.dat')
     b = vecToFloat(test_dir + '/b.dat')
+    print(f"before: {A['val']}")
+    print(subtract(A, A))
+    print(f"after: {A['val']}")
 
     return
 

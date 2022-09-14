@@ -1,25 +1,41 @@
 import sys
+import copy
 
 
 def add(A, B):
-    return
-
-
-def matrix(m, n, src_file):
-    if (m == None or n == None or src_file == None):
+    if(A['row'] != B['row'] and A['col'] != B['col']):
+        print('> Err. size mismatch.')
         sys.exit(1)
 
+    S = list()
+    i = 0
+    # row
+    while i < A['row']:
+        row_sum = list()
+        j = 0
+        # col
+        while j < A['col']:
+            row_sum.append(A['val'][i][j] + B['val'][i][j])
+            j += 1
+        # push
+        S.append(row_sum)
+        i += 1
+    return S
+
+
+def matrix(src_file):
     A = list()
     with open(src_file, 'r') as f:
-        for row in f.readlines():
+        A_str = f.readlines()
+        m = len(A_str)  # row
+        for i in range(len(A_str)):
             row_el = list()
-            for el in row.strip():
+            for el in A_str[i].strip():
                 if(el != ' '):
                     row_el.append(float(el))
+            n = len(row_el)  # col
             A.append(row_el)
-
-    print(f'A {m} x {n} matrix is created.')
-    return A
+    return {'val': A, 'row': m, 'col': n}
 
 
 def matrixMult(A, B):
@@ -31,7 +47,26 @@ def scalarMult(A, B):
 
 
 def subtract(A, B):
-    return
+    # Order: A - B
+    if(A['row'] != B['row'] and A['col'] != B['col']):
+        print('> Err. size mismatch.')
+        sys.exit(1)
+
+    # de-reference the dict
+    B = copy.deepcopy(B)
+    i = 0
+    # row
+    while i < B['row']:
+        j = 0
+        # col
+        while j < B['col']:
+            B['val'][i][j] = -B['val'][i][j]
+            j += 1
+        # inc
+        i += 1
+    # invoke add
+    S = add(A, B)
+    return S
 
 
 def trans(A):
