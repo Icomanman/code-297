@@ -1,5 +1,6 @@
 import sys
 import copy
+# import csv
 
 
 def add(A, B):
@@ -38,16 +39,21 @@ def matrix(src_file):
     with open(src_file, 'r') as f:
         A_str = f.readlines()
         m = len(A_str)  # row
-        for i in range(len(A_str)):
+        for row in A_str:
             row_el = list()
             val = ''
-            for el in A_str[i].strip():
-                if(el != ','):
+            for el in row:
+                # if((el != ',' or el != '\t') and el != '\n'):
+                if((el != ',')):
                     val += el
                 else:
-                    # row_el.append(float(el))
                     row_el.append(float(val))
                     val = ''
+
+            # append the last column
+            if(val):
+                row_el.append(float(val))
+
             n = len(row_el)  # col
             A.append(row_el)
     return {'val': A, 'row': m, 'col': n}
