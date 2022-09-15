@@ -5,7 +5,7 @@ import re
 
 
 def add(A, B):
-    if(A['row'] != B['row'] and A['col'] != B['col']):
+    if (A['row'] != B['row'] and A['col'] != B['col']):
         print('> Err. size mismatch.')
         sys.exit(1)
 
@@ -44,15 +44,15 @@ def matrix(src_file):
             row_el = list()
             val = ''
             for el in row:
-                if(bool(re.match('[0-9-.]', el))):
+                if (bool(re.match('[0-9-.]', el))):
                     val += el
-                else:
+                elif (val):
                     row_el.append(float(val))
-                    # if(val):
                     # reset val
                     val = ''
+
             # append the last column
-            if(val):
+            if (val):
                 row_el.append(float(val))
 
             n = len(row_el)  # col
@@ -70,7 +70,7 @@ def scalarMult(A, B):
 
 def subtract(A, B):
     # Order: A - B
-    if(A['row'] != B['row'] and A['col'] != B['col']):
+    if (A['row'] != B['row'] and A['col'] != B['col']):
         print('> Err. size mismatch.')
         sys.exit(1)
 
