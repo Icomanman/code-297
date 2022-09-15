@@ -1,6 +1,7 @@
 import sys
 import copy
 # import csv
+import re
 
 
 def add(A, B):
@@ -43,13 +44,13 @@ def matrix(src_file):
             row_el = list()
             val = ''
             for el in row:
-                # if((el != ',' or el != '\t') and el != '\n'):
-                if((el != ',')):
+                if(bool(re.match('[0-9-.]', el))):
                     val += el
                 else:
                     row_el.append(float(val))
+                    # if(val):
+                    # reset val
                     val = ''
-
             # append the last column
             if(val):
                 row_el.append(float(val))
