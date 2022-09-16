@@ -152,7 +152,7 @@ def trans(A, checked=False):
     return S
 
 
-def vectorMult(A, b, checked=False):
+def vectorMMult(A, b, checked=False):
     if (checked):
         B = dict()
         B['val'] = A
