@@ -4,8 +4,14 @@ import copy
 import re
 
 
-def add(A, B):
-    if (A['row'] != B['row'] and A['col'] != B['col']):
+def add(A, B, checked=False):
+    if (checked):
+        C = dict()
+        C['val'] = B
+        C['row'] = A['row']
+        C['col'] = A['col']
+        B = dict(C)
+    elif (A['row'] != B['row'] and A['col'] != B['col']):
         print('> Err. size mismatch.')
         sys.exit(1)
 
@@ -61,9 +67,15 @@ def matrix(src_file):
     return {'val': A, 'row': m, 'col': n}
 
 
-def matrixMult(A, B):
+def matrixMult(A, B, checked=False):
     # order: A x B
-    if (A['row'] != B['col']):
+    if (checked):
+        C = dict()
+        C['val'] = B
+        C['row'] = A['row']
+        C['col'] = A['col']
+        B = dict(C)
+    elif (A['row'] != B['col']):
         print('> Err. size mismatch.')
         sys.exit(1)
 
@@ -79,7 +91,13 @@ def matrixMult(A, B):
     return S
 
 
-def scalarMult(A, x):
+def scalarMult(A, x, checked=False):
+    if (checked):
+        B = dict()
+        B['val'] = A
+        B['row'] = A['row']
+        B['col'] = A['col']
+        A = dict(B)
     S = list()
     for row in A['val']:
         row_el = list()
@@ -89,9 +107,15 @@ def scalarMult(A, x):
     return S
 
 
-def subtract(A, B):
+def subtract(A, B, checked=False):
     # Order: A - B
-    if (A['row'] != B['row'] and A['col'] != B['col']):
+    if (checked):
+        C = dict()
+        C['val'] = B
+        C['row'] = A['row']
+        C['col'] = A['col']
+        B = dict(C)
+    elif (A['row'] != B['row'] and A['col'] != B['col']):
         print('> Err. size mismatch.')
         sys.exit(1)
 
@@ -112,12 +136,30 @@ def subtract(A, B):
     return S
 
 
-def trans(A):
-    return
+def trans(A, checked=False):
+    if (checked):
+        B = dict()
+        B['val'] = A
+        B['row'] = A['row']
+        B['col'] = A['col']
+        A = dict(B)
+    S = list()
+    for row in range(A['row']):
+        row_el = list()
+        for col in range(A['col']):
+            row_el.append(A['val'][col][row])
+        S.append(row_el)
+    return S
 
 
-def vectorMult(A, b):
-    if (A['row'] != len(b)):
+def vectorMult(A, b, checked=False):
+    if (checked):
+        B = dict()
+        B['val'] = A
+        B['row'] = A['row']
+        B['col'] = A['col']
+        A = dict(B)
+    elif (A['row'] != len(b)):
         print('> Err. size mismatch.')
         sys.exit(1)
 
