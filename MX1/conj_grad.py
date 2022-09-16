@@ -17,15 +17,17 @@ def main():
     print('This is an implementation of the Conjugate Gradient Method algorithm.')
     # A = matrix(test_dir + '/A.dat')
     A = matrix(dat_dir + A_file)
+    # A = matrix(test_dir + '/ones.dat')
     # b = vecToFloat(test_dir + '/b.dat')
     # print(A['val'])
     # print(b)
+
     # print(subtract(A, A))
     # print(scalarMult(A, 2))
-    # print(f"size: {A['row']} x {A['col']}")
     # print(vectorMult(A, b))
-    C = matrixMult(A, A)
-    print(C[0][8:15])
+    print(matrixMult(A, A))
+
+    # print(f"size: {A['row']} x {A['col']}")
     return
 
 

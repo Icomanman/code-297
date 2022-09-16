@@ -41,10 +41,11 @@ def matrix(src_file):
         A_str = f.readlines()
         m = len(A_str)  # row
         for row in A_str:
+            # TODO: verify trailing whitespaces within the source file
             row_el = list()
             val = ''
             for el in row:
-                if (bool(re.match('[0-9-.]', el))):
+                if (bool(re.match('[0-9-.e]', el))):
                     val += el
                 elif (val):
                     row_el.append(float(val))
