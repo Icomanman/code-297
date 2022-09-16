@@ -28,7 +28,7 @@ def conjGrad(A, b, checked=False):
     print('This is an implementation of the Conjugate Gradient Method algorithm.')
     # param constants
     err = 0.001  # tolerance
-    x = vector(len(b), 1)  # init solution vector
+    x = vector(len(b), 0)  # init solution vector
 
     i = 0
     i_max = 100
@@ -38,11 +38,13 @@ def conjGrad(A, b, checked=False):
     d = r
     c_new = vectorMult(r, r)
     c0 = c_new
-    while i < i_max or c_new > (c0*(err ** 2)):
+    tol = c0 * (err ** 2)
+
+    while i < i_max and c_new > tol:
         q = vectorMMult(A, d)
         alpha = c_new / (vectorMult(d, q))
 
-        x = vectorAdd(x, (vectorScalarMult(d, alpha)))
+        x = vectorAdd(x, vectorScalarMult(d, alpha))
         r = vectorSub(r, vectorScalarMult(q, alpha))
 
         c_old = c_new
@@ -60,25 +62,15 @@ def main():
     # A = matrix(test_dir + '/B.dat')
     # A = matrix(test_dir + '/ones.dat')
     # b = vecToFloat(test_dir + '/b.dat')
-    b = vecToFloat(test_dir + '/y.dat')
+    # b = vecToFloat(test_dir + '/y.dat')
 
     A = matrix(dat_dir + A_file)
-    # b = vecToFloat(dat_dir + b_file)
+    b = vecToFloat(dat_dir + b_file)
+    sol = vecToFloat(test_dir + '/sol.dat')
 
-    # print(A['val'])
-    # print(b)
-
-    # print(add(A, A))
-    # print(subtract(A, A))
-    # print(scalarMult(A, 2))
-    # print(vectorMult(A, b))
-    # print(matrixMult(A, A))
-    # print(trans(A))
-    # print(matrixMult(A, trans(A), True))
-
-    # print(f"size: {A['row']} x {A['col']}")
     x = conjGrad(A, b)
-    print(x)
+    r = vectorSub(x, sol)
+    printVector(r)
     return
 
 
