@@ -61,11 +61,31 @@ def matrix(src_file):
 
 
 def matrixMult(A, B):
-    return
+    # order: A x B
+    if (A['row'] != B['col']):
+        print('> Err. size mismatch.')
+        sys.exit(1)
+
+    S = list()
+    for row_A in range(A['row']):
+        row_el = list()
+        for col_B in range(B['col']):
+            el = 0.0  # init?
+            for row_B in range(B['row']):
+                el += A['val'][row_A][row_B] * B['val'][row_B][col_B]
+            row_el.append(el)
+        S.append(row_el)
+    return S
 
 
-def scalarMult(A, B):
-    return
+def scalarMult(A, x):
+    S = list()
+    for row in A['val']:
+        row_el = list()
+        for el in row:
+            row_el.append(float(el * x))
+        S.append(row_el)
+    return S
 
 
 def subtract(A, B):
@@ -95,5 +115,15 @@ def trans(A):
     return
 
 
-def vectorMult(A, B):
-    return
+def vectorMult(A, b):
+    if (A['row'] != len(b)):
+        print('> Err. size mismatch.')
+        sys.exit(1)
+
+    S = list()
+    for row in A['val']:
+        row_el = 0.0  # init val?
+        for i in range(len(row)):
+            row_el += row[i] * b[i]
+        S.append(row_el)
+    return S
