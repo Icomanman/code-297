@@ -26,13 +26,14 @@ def conjGrad(A, b, checked=False):
         sys.exit(1)
 
     print('This is an implementation of the Conjugate Gradient Method algorithm.')
+
     # param constants
     err = 0.001  # tolerance
     x = vector(len(b), 0)  # init solution vector
-
-    i = 0
     i_max = 100
+
     # init
+    i = 0
     Ax = vectorMMult(A, x)
     r = vectorSub(b, Ax)
     d = r

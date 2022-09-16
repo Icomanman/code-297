@@ -1,7 +1,17 @@
 import sys
 import copy
-# import csv
 import re
+# import csv
+
+'''
+All matrices are converted to a python list (2-dim array -> [row][column]); 
+csv and text files can be read (whitespaces, tabs and commas are taken as delimiters)
+blank lines should be removed, otherwise will be taken as empty rows
+'''
+# (Time constraint) Maybe rewrite this entire module as a class instead of functions: 16 Sep 2022
+# Or, verify the need to include matrix dimensions in the return value
+# (useful for checking operations, i.e., multiplication).
+# Use the numpy lib moving forward
 
 
 def add(A, B, checked=False):

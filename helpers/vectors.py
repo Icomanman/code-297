@@ -1,5 +1,10 @@
 import sys
 
+'''
+All vectors are converted to a python list; source file must be 'neatly' written in a column
+i.e., no trailing whitespaces
+'''
+
 
 def vector(size, init=0):
     if (size < 1):
