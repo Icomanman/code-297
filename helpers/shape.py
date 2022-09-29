@@ -1,5 +1,7 @@
 
+import numpy as np
 # Shape Functions
+
 
 def delsquad(t):
     c = 0.25
@@ -7,7 +9,7 @@ def delsquad(t):
     dN2 = c * (1 - t)
     dN3 = c * (1 + t)
     dN4 = -c * (1 + t)
-    dN = [dN1, 0, dN2, 0, dN3, 0, dN4, 0]
+    dN = [dN1, dN2, dN3, dN4]
     return dN
 
 
@@ -17,8 +19,17 @@ def deltquad(s):
     dN2 = -c * (1 + s)
     dN3 = c * (1 + s)
     dN4 = c * (1 - s)
-    dN = [0, dN1, 0, dN2, 0, dN3, 0, dN4]
+    dN = [dN1, dN2, dN3, dN4]
     return dN
+
+
+def jacobian(x, y):
+
+    j = [
+        [np.dot(1, 1), np.dot(1, 1)],
+        [np.dot(1, 1), np.dot(1, 1)]
+    ]
+    return j
 
 
 def quad(s, t):
