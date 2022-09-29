@@ -32,10 +32,9 @@ def main():
     kglob = np.zeros((matsize, matsize), float)
 
     for el in elements:
-        print(elements[el])
         quadelem = ParentQuad(elements[el], el, nodes)
         elemk = ke(quadelem)
-        kglob = np.add(kglob, elemk)
+        # kglob = np.add(kglob, elemk)
 
     return 0
 

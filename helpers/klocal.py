@@ -5,5 +5,7 @@ from shape import delsquad,  deltquad, quad  # NOQA
 
 
 def ke(el):
+    # TODO: B Matrix
+
     k = 0
     return k

@@ -1,12 +1,17 @@
 
 
 class ParentQuad():
-    x = list()
-    y = list()
+    # init to None (NoneType)
+    x = [None, None, None, None]
+    y = [None, None, None, None]
 
-    def __init__(self, element, number, *nodes):
-        self.number = number
+    def __init__(self, element, number, nodes):
+        self.number = int(number)
         self.nodes = [element['node_A'], element['node_B'],
                       element['node_C'], element['node_D']]
-        # self.x = self.x.append(self.x1, self.x2, self.x3, self.x4)
-        # self.y = self.y.append(self.y1, self.y2, self.y3, self.y4)
+
+        for i in range(len(self.x)):
+            # nodes is a dict, hence the explicit casting, str
+            self.x[i] = nodes[str(self.nodes[i])]['x']
+            self.y[i] = nodes[str(self.nodes[i])]['y']
+            # z is ommitted: 29 Sep 2022
