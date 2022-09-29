@@ -3,8 +3,8 @@ import json
 import os
 
 
-def getModel(filename):
-    file_ = f'{os.getcwd()}/MX2/model/plate-beam.json'
+def getModel(filename, savefile=False):
+    file_ = f'{os.getcwd()}/MX2/model/src.json'
     model = dict()
 
     with open(file_) as f:
@@ -12,12 +12,13 @@ def getModel(filename):
         model['nodes'] = model_dat['nodes']
         model['elements'] = model_dat['meshed_plates']
 
-    try:
-        model_file = open(filename, 'x')
-    except:
-        model_file = open(filename, 'w')
-    model_file.write(json.dumps(model))
-    model_file.close()
+    if savefile:
+        try:
+            model_file = open(filename, 'x')
+        except:
+            model_file = open(filename, 'w')
+        model_file.write(json.dumps(model))
+        model_file.close()
 
     return model
 
