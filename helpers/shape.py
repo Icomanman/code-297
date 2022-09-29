@@ -1,7 +1,7 @@
 
 # Shape Functions
 
-def delSQuad(t):
+def delsquad(t):
     c = 0.25
     N1 = -c * (1 - t)
     N2 = c * (1 - t)
@@ -12,7 +12,7 @@ def delSQuad(t):
     return N
 
 
-def delTQuad(s):
+def deltquad(s):
     c = 0.25
     N1 = -c * (1 - s)
     N2 = -c * (1 + s)

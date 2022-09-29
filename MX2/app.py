@@ -1,23 +1,42 @@
 
 import os
-from platform import node
 import sys
 import numpy as np
 from numpy import linalg as ln
 
 sys.path.append(f'{os.getcwd()}/helpers')
 
-from model_parser import getModel  # NOQA
-from matrices import matrix, trans  # NOQA
-from k_loc import kLocal  # NOQA
+from modelparser import getmodel  # NOQA
+from klocal import ke  # NOQA
+from elements import ParentQuad  # NOQA
 
 
 def main():
-    model_dir = os.getcwd() + '/MX2/model'
-    model = getModel(f'{model_dir}/2d.json', True)
+    sd = 2  # 2D - dimensional space
+    modeldir = os.getcwd() + '/MX2/model'
+    model = getmodel(f'{modeldir}/2d.json', True)
 
-    node_count = len(model['nodes'].keys())
-    el_count = len(model['elements'].keys())
+    nodes = model['nodes']
+    elements = model['elements']
+    nodecount = len(nodes.keys())
+    elcount = len(elements.keys())
+
+    coords = list()
+    for node in nodes:
+        coords.append(
+            {'x': nodes[node]['x'], 'y': nodes[node]['y'], 'z': nodes[node]['z']})
+        # z may be drop to save space (for this case - 2D only)
+
+    # init the global matrix
+    matsize = sd * nodecount
+    kglob = np.zeros((matsize, matsize), float)
+
+    for el in elements:
+        print(elements[el])
+        quadelem = ParentQuad(elements[el], el, nodes)
+        elemk = ke(quadelem)
+        kglob = np.add(kglob, elemk)
+
     return 0
 
 
