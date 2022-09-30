@@ -4,7 +4,8 @@ import os
 
 
 def getmodel(filename, savefile=False):
-    file_ = f'{os.getcwd()}/MX2/model/src.json'
+    # file_ = f'{os.getcwd()}/MX2/model/src.json'
+    file_ = f'{os.getcwd()}/MX2/model/iso_src.json'
     model = dict()
 
     with open(file_) as f:

@@ -1,4 +1,5 @@
 
+from enum import Flag
 import os
 import sys
 import numpy as np
@@ -24,7 +25,8 @@ def gathermatrix(nodes, elementtype='quad'):
 def main():
     sd = 2  # 2D - dimensional space
     modeldir = os.getcwd() + '/MX2/model'
-    model = getmodel(f'{modeldir}/2d.json', True)
+    # model = getmodel(f'{modeldir}/2d.json', True)
+    model = getmodel(f'{modeldir}/iso.json', False)
 
     nodes = model['nodes']
     elements = model['elements']
@@ -43,7 +45,8 @@ def main():
 
     for el in elements:
         quadelem = ParentQuad(elements[el], el, nodes)
-        elemk = ke(quadelem)
+        elemk = ke(quadelem, 2)
+        print(np.dot(elemk, 0.001))
         # kglob = np.add(kglob, elemk)
 
     return 0
