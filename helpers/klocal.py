@@ -1,10 +1,10 @@
 import numpy as np
-from numpy import linalg as matrix
-from gauss import quadrature
+
+from bmatrix import bmatrix  # NOQA
 
 
 def ke(el):
-    B = list()
-    q = quadrature(4)
-    k = 0
+    B = bmatrix(el, 2)
+    Btrans = np.transpose(B)
+    k = 1
     return k

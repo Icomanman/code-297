@@ -8,7 +8,17 @@ sys.path.append(f'{os.getcwd()}/helpers')
 
 from modelparser import getmodel  # NOQA
 from klocal import ke  # NOQA
-from elements import ParentQuad  # NOQA
+from Elements import ParentQuad  # NOQA
+
+
+def gathermatrix(nodes, elementtype='quad'):
+    nodelist = list(nodes.keys())
+
+    if elementtype == 'quad':
+        L = 1
+    elif elementtype == 'tri':
+        L = 1
+    return L
 
 
 def main():
