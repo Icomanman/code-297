@@ -1,7 +1,6 @@
 
 from sys import exit as exit_
-
-from matrices import matrixMult, scalarMult  # NOQA
+import numpy as np
 from quadshape import del_, dels, delt  # NOQA
 
 params = {
@@ -21,7 +20,7 @@ params = {
 
 
 def bmatrix(el, n):
-    B = 0
+    B = np.zeros((3, 8), float)
     cn = params[str(n)]['c']
     xn = params[str(n)]['x']
 
@@ -30,6 +29,7 @@ def bmatrix(el, n):
 
     for i in range(n):
         t = xn[i]
+
         for j in range(n):
             s = xn[j]
 
@@ -42,12 +42,28 @@ def bmatrix(el, n):
             dys = del_(ycoords, dNs)
             dyt = del_(ycoords, dNt)
 
-            j = [[dxs, dys], [dxt, dyt]]
+            J = [[dxs, dys], [dxt, dyt]]
             det = (dxs * dyt) - (dxt * dys)
 
             if det <= 0:
                 exit_('Determinant Error.')
 
-            jinv = 1
-            B = B
+            Jinv = [[dyt/det, -dys/det], [-dxt/det, dxs/det]]
+
+            dN = np.matmul(Jinv, [dNs, dNt])
+            dNx = dN[0]
+            dNy = dN[1]
+
+            _ = np.zeros((3, 8))
+            for k in range(0, 2*len(dNx), 2):
+                _[0][k] = dNx[int(k/2)]
+
+            for l in range(0, 2*len(dNy), 2):
+                _[1][int(l+1)] = dNy[int(l/2)]
+
+            _[2] = np.add(_[0], _[1])
+
+            B = cn[j] * np.add(B, _)
+
+        B = cn[i] * B
     return B

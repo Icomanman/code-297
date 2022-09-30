@@ -85,7 +85,7 @@ def matrixMult(A, B, checked=False):
         C['row'] = A['row']
         C['col'] = A['col']
         B = dict(C)
-    elif (A['row'] != B['col']):
+    elif (A['col'] != B['row']):
         print('> Err. size mismatch.')
         sys.exit(1)
 
