@@ -12,6 +12,22 @@ from gathermatrix import gathermatrix  # NOQA
 from Elements import ParentQuad  # NOQA
 
 
+def loadvector(size):
+    f = list([0] * size)
+
+    return f
+
+
+def writekcsv(K):
+    out = open(f'{os.getcwd()}/tmp/K.csv', 'w')
+    for lines in range(len(K[0])):
+        for entry in range(len(K[0])):
+            out.write(str(K[lines][entry]) + ',')
+        out.write('\n')
+    out.close()
+    return 0
+
+
 def main():
     sd = 2  # 2D - dimensional space
     modeldir = os.getcwd() + '/MX2/model'
@@ -42,12 +58,8 @@ def main():
         K_ = gathermatrix(elemk, elements[el], K, 'quad')
         K = np.add(K, K_)
 
-    out = open(f'{os.getcwd()}/K.csv', 'w')
-    for lines in range(len(K[0])):
-        for entry in range(len(K[0])):
-            out.write(str(K[lines][entry]) + ',')
-        out.write('\n')
-    out.close()
+    writekcsv(K)
+    f = loadvector(matsize)
     return K
 
 
