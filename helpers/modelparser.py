@@ -3,12 +3,10 @@ import json
 import os
 
 
-def getmodel(filename, savefile=False):
-    # file_ = f'{os.getcwd()}/MX2/model/src.json'
-    file_ = f'{os.getcwd()}/MX2/model/iso_src.json'
+def getmodel(filename, srcfile, savefile=False):
     model = dict()
 
-    with open(file_) as f:
+    with open(srcfile) as f:
         modeldat = json.load(f)
         model['nodes'] = modeldat['nodes']
         model['elements'] = modeldat['meshed_plates']

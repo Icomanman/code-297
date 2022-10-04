@@ -1,32 +1,25 @@
 
-from enum import Flag
+import json
 import os
 import sys
 import numpy as np
-from numpy import linalg as ln
 
 sys.path.append(f'{os.getcwd()}/helpers')
 
 from modelparser import getmodel  # NOQA
 from klocal import ke  # NOQA
+from gathermatrix import gathermatrix  # NOQA
 from Elements import ParentQuad  # NOQA
-
-
-def gathermatrix(nodes, elementtype='quad'):
-    nodelist = list(nodes.keys())
-
-    if elementtype == 'quad':
-        L = 1
-    elif elementtype == 'tri':
-        L = 1
-    return L
 
 
 def main():
     sd = 2  # 2D - dimensional space
     modeldir = os.getcwd() + '/MX2/model'
-    # model = getmodel(f'{modeldir}/2d.json', True)
-    model = getmodel(f'{modeldir}/iso.json', False)
+
+    modelfile = '2d.json'
+    srcfile = f'{modeldir}/src.json'
+
+    model = getmodel(f'{modeldir}/{modelfile}', srcfile, True)
 
     nodes = model['nodes']
     elements = model['elements']
@@ -41,15 +34,21 @@ def main():
 
     # init the global matrix
     matsize = sd * nodecount
-    kglob = np.zeros((matsize, matsize), float)
+    K = np.zeros((matsize, matsize), float)
 
     for el in elements:
         quadelem = ParentQuad(elements[el], el, nodes)
         elemk = ke(quadelem, 2)
-        print(np.dot(elemk, 0.001))
-        # kglob = np.add(kglob, elemk)
+        K_ = gathermatrix(elemk, elements[el], K, 'quad')
+        K = np.add(K, K_)
 
-    return 0
+    out = open(f'{os.getcwd()}/K.csv', 'w')
+    for lines in range(len(K[0])):
+        for entry in range(len(K[0])):
+            out.write(str(K[lines][entry]) + ',')
+        out.write('\n')
+    out.close()
+    return K
 
 
 if __name__ == '__main__':
