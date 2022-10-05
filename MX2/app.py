@@ -58,7 +58,7 @@ def main():
         K_ = gathermatrix(elemk, elements[el], K, 'quad')
         K = np.add(K, K_)
 
-    writekcsv(K)
+    # writekcsv(K)
     f = loadvector(matsize)
     return K
 

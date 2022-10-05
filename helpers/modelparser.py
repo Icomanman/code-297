@@ -10,6 +10,7 @@ def getmodel(filename, srcfile, savefile=False):
         modeldat = json.load(f)
         model['nodes'] = modeldat['nodes']
         model['elements'] = modeldat['meshed_plates']
+        model['point_loads'] = modeldat['point_loads']
 
     if savefile:
         try:

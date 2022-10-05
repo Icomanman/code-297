@@ -1687,10 +1687,75 @@
     }
   },
   "sections": {},
-  "supports": {},
+  "supports": {
+    "1": {
+      "direction_code": "BBBBBB",
+      "tx": 0,
+      "ty": 0,
+      "tz": 0,
+      "rx": 0,
+      "ry": 0,
+      "rz": 0,
+      "node": 1,
+      "restraint_code": "FFFRRR"
+    },
+    "2": {
+      "direction_code": "BBBBBB",
+      "tx": 0,
+      "ty": 0,
+      "tz": 0,
+      "rx": 0,
+      "ry": 0,
+      "rz": 0,
+      "node": 30,
+      "restraint_code": "FFFRRR"
+    },
+    "3": {
+      "direction_code": "BBBBBB",
+      "tx": 0,
+      "ty": 0,
+      "tz": 0,
+      "rx": 0,
+      "ry": 0,
+      "rz": 0,
+      "node": 59,
+      "restraint_code": "FFFRRR"
+    },
+    "4": {
+      "direction_code": "BBBBBB",
+      "tx": 0,
+      "ty": 0,
+      "tz": 0,
+      "rx": 0,
+      "ry": 0,
+      "rz": 0,
+      "node": 88,
+      "restraint_code": "FFFRRR"
+    },
+    "5": {
+      "direction_code": "BBBBBB",
+      "tx": 0,
+      "ty": 0,
+      "tz": 0,
+      "rx": 0,
+      "ry": 0,
+      "rz": 0,
+      "node": 117,
+      "restraint_code": "FFFRRR"
+    }
+  },
   "settlements": {},
   "groups": {},
-  "point_loads": {},
+  "point_loads": {
+    "1": {
+      "x_mag": 0,
+      "y_mag": -50,
+      "z_mag": 0,
+      "load_group": "LG",
+      "type": "N",
+      "node": 145
+    }
+  },
   "moments": {},
   "distributed_loads": {},
   "pressures": {},
