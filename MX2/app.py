@@ -1,5 +1,4 @@
 
-import json
 import os
 import sys
 import numpy as np
@@ -12,9 +11,18 @@ from gathermatrix import gathermatrix  # NOQA
 from Elements import ParentQuad  # NOQA
 
 
-def loadvector(size):
-    f = list([0] * size)
+def loadvector(nodes, **loads):
+    sd = loads['sd']
+    pointloads = loads['p']
+    # point loads
+    if sd == 2:
 
+        for p in pointloads:
+
+            print(p)
+
+    # TODO: traction loads
+    f = list([0] * sd)
     return f
 
 
@@ -30,12 +38,15 @@ def writekcsv(K):
 
 def main():
     sd = 2  # 2D - dimensional space
-    modeldir = os.getcwd() + '/MX2/model'
+    # modeldir = os.getcwd() + '/MX2/model'
+    # modelfile = '2d.json'
+    # srcfile = f'{modeldir}/src.json'
 
-    modelfile = '2d.json'
-    srcfile = f'{modeldir}/src.json'
+    modeldir = os.getcwd() + '/MX2/test'
+    modelfile = 'test.json'
+    srcfile = f'{modeldir}/test_src.json'
 
-    model = getmodel(f'{modeldir}/{modelfile}', srcfile, True)
+    model = getmodel(f'{modeldir}/{modelfile}', srcfile, False)
 
     nodes = model['nodes']
     elements = model['elements']
@@ -59,7 +70,7 @@ def main():
         K = np.add(K, K_)
 
     # writekcsv(K)
-    f = loadvector(matsize)
+    f = loadvector(nodes, sd=sd, p=model['point_loads'])
     return K
 
 
