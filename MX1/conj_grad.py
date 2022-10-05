@@ -69,7 +69,9 @@ def main():
     b = vecToFloat(dat_dir + b_file)
     sol = vecToFloat(test_dir + '/sol.dat')
 
-    x = conjGrad(A, b)
+    import conjugategradient
+    x = conjugategradient.conjugate(A, b)
+    # x = conjGrad(A, b)
     r = vectorSub(x, sol)
     printVector(r)
     return

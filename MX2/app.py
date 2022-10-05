@@ -13,16 +13,19 @@ from Elements import ParentQuad  # NOQA
 
 def loadvector(nodes, **loads):
     sd = loads['sd']
-    pointloads = loads['p']
+
     # point loads
+    pointloads = loads['p']
+    nodalloads = dict(nodes)
+    f = list([0] * sd * len(nodes))
     if sd == 2:
-
         for p in pointloads:
-
-            print(p)
-
+            nodalloads[p]['x'] = pointloads[p]['x_mag']
+            nodalloads[p]['y'] = pointloads[p]['y_mag']
+            nodeid = (pointloads[p]['node'] - 1) * 2
+            f[nodeid] = pointloads[p]['x_mag']
+            f[nodeid + 1] = pointloads[p]['y_mag']
     # TODO: traction loads
-    f = list([0] * sd)
     return f
 
 
@@ -38,16 +41,18 @@ def writekcsv(K):
 
 def main():
     sd = 2  # 2D - dimensional space
-    # modeldir = os.getcwd() + '/MX2/model'
-    # modelfile = '2d.json'
-    # srcfile = f'{modeldir}/src.json'
+    modeldir = os.getcwd() + '/MX2/model'
+    modelfile = '2d.json'
+    srcfile = f'{modeldir}/src.json'
 
-    modeldir = os.getcwd() + '/MX2/test'
-    modelfile = 'test.json'
-    srcfile = f'{modeldir}/test_src.json'
+    # modeldir = os.getcwd() + '/MX2/test'
+    # modelfile = 'test.json'
+    # srcfile = f'{modeldir}/test_src.json'
 
     model = getmodel(f'{modeldir}/{modelfile}', srcfile, False)
 
+    # model node and element numbers are assumed to be all SORTED
+    # (translation from key-paired obj to arrays/list): 05 Oct 2022
     nodes = model['nodes']
     elements = model['elements']
     nodecount = len(nodes.keys())
