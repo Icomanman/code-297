@@ -42,8 +42,8 @@ def ke(el, gp):
         for j in range(gp):
             s = xn[j]
 
-            dNs = dels(s)
-            dNt = delt(t)
+            dNs = dels(t)
+            dNt = delt(s)
 
             # Jacobian Elements
             dxs = del_(xcoords, dNs)
@@ -74,7 +74,6 @@ def ke(el, gp):
 
             Btrans = np.transpose(B)
             k_ = cn[i] * cn[j] * np.matmul(Btrans, np.matmul(D, B)) * det
-            # k_ = np.matmul(Btrans, np.matmul(D, B))
             ke = np.add(ke, k_)
 
     return ke

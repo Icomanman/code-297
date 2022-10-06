@@ -74,7 +74,7 @@ def main():
         K_ = gathermatrix(elemk, elements[el], K, 'quad')
         K = np.add(K, K_)
 
-    # writekcsv(K)
+    # writekcsv(elemk)
     f = loadvector(nodes, sd=sd, p=model['point_loads'])
     return K
 
