@@ -4,7 +4,7 @@ import numpy as np
 
 def solve(A, b, **params):
 
-    A = A['val']
+    # A = A['val']
     print('This is an implementation of the Conjugate Gradient Method algorithm.')
     # param constants
     err = 0.001  # tolerance

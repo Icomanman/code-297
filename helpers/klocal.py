@@ -54,7 +54,7 @@ def ke(el, gp):
             J = [[dxs, dys], [dxt, dyt]]
             det = (dxs * dyt) - (dxt * dys)
 
-            if det <= 0:
+            if det == 0:
                 sys.exit('Determinant Error.')
 
             Jinv = [[dyt / det, -dys / det], [-dxt / det, dxs / det]]

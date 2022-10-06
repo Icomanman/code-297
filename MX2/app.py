@@ -6,9 +6,10 @@ import numpy as np
 sys.path.append(f'{os.getcwd()}/helpers')
 
 from modelparser import getmodel  # NOQA
+from Elements import ParentQuad  # NOQA
 from klocal import ke  # NOQA
 from gathermatrix import gathermatrix  # NOQA
-from Elements import ParentQuad  # NOQA
+import conjugategradient  # NOQA
 
 
 def loadvector(nodes, **loads):
@@ -76,7 +77,13 @@ def main():
 
     # writekcsv(elemk)
     f = loadvector(nodes, sd=sd, p=model['point_loads'])
-    return K
+
+    # determinant check
+    Kdet = np.linalg.det(K)
+    if Kdet == 0:
+        sys.exit('> Determinant Error.')
+    d = conjugategradient.solve(K, f)
+    return d
 
 
 if __name__ == '__main__':
