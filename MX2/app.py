@@ -30,8 +30,8 @@ def loadvector(nodes, **loads):
     return f
 
 
-def writekcsv(K):
-    out = open(f'{os.getcwd()}/tmp/K.csv', 'w')
+def writekcsv(K, suff='test'):
+    out = open(f'{os.getcwd()}/tmp/K_{suff}.csv', 'w')
     for lines in range(len(K[0])):
         for entry in range(len(K[0])):
             out.write(str(K[lines][entry]) + ',')
@@ -42,13 +42,13 @@ def writekcsv(K):
 
 def main():
     sd = 2  # 2D - dimensional space
-    modeldir = os.getcwd() + '/MX2/model'
-    modelfile = '2d.json'
-    srcfile = f'{modeldir}/src.json'
+    # modeldir = os.getcwd() + '/MX2/model'
+    # modelfile = '2d.json'
+    # srcfile = f'{modeldir}/src.json'
 
-    # modeldir = os.getcwd() + '/MX2/test'
-    # modelfile = 'test.json'
-    # srcfile = f'{modeldir}/test_src.json'
+    modeldir = os.getcwd() + '/MX2/test'
+    modelfile = 'test.json'
+    srcfile = f'{modeldir}/test_src.json'
 
     model = getmodel(f'{modeldir}/{modelfile}', srcfile, False)
 
@@ -75,7 +75,7 @@ def main():
         K_ = gathermatrix(elemk, elements[el], K, 'quad')
         K = np.add(K, K_)
 
-    # writekcsv(elemk)
+    writekcsv(elemk)
     f = loadvector(nodes, sd=sd, p=model['point_loads'])
 
     # determinant check

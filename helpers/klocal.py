@@ -8,7 +8,6 @@ from quadshape import del_, dels, delt  # NOQA
 # These constants could be moved as props of the ParentQuad class
 E = 200000 * (10**6)
 v = 0.3
-Emod = E / (1 - v**2)
 D = dmatrix(E, v)
 
 params = {
