@@ -9,6 +9,8 @@
 *.synctex
 *.gz
 *.out
+*.tmp.*
+tmp.*
 
 /HW1/anim
 /HW1/figure
